@@ -1,0 +1,8 @@
+../drivers/Src/stm32f446re_gpio_driver.c:23:6:GPIO_PeriClockControl	11
+../drivers/Src/stm32f446re_gpio_driver.c:76:7:GPIO_Init	15
+../drivers/Src/stm32f446re_gpio_driver.c:175:7:GPIO_DeInit	10
+../drivers/Src/stm32f446re_gpio_driver.c:222:10:GPIO_ReadFromInputPin	1
+../drivers/Src/stm32f446re_gpio_driver.c:246:7:GPIO_WriteToOutputPin	2
+../drivers/Src/stm32f446re_gpio_driver.c:275:7:GPIO_IRQInterruptConfig	12
+../drivers/Src/stm32f446re_gpio_driver.c:330:7:GPIO_IRQPriorityConfig	1
+../drivers/Src/stm32f446re_gpio_driver.c:356:7:GPIO_IRQHandling	2
