@@ -1,5 +1,6 @@
-"./Src/003_GPIOinterrupt.o"
+"./Src/SPI_interrupt_test.o"
 "./Src/syscalls.o"
 "./Src/sysmem.o"
 "./Startup/startup_stm32f446retx.o"
 "./drivers/Src/stm32f446re_gpio_driver.o"
+"./drivers/Src/stm32f446re_spi_driver.o"

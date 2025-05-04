@@ -1,3 +1,0 @@
-../Src/003_GPIOinterrupt.c:14:6:delay	16	static
-../Src/003_GPIOinterrupt.c:20:5:main	8	static
-../Src/003_GPIOinterrupt.c:53:6:EXTI15_10_IRQHandler	8	static

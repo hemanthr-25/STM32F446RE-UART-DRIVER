@@ -8,10 +8,11 @@
 #ifndef INC_STM32F446_H_
 #define INC_STM32F446_H_
 
-//#include<stddef.h>
+#include<stddef.h>
 #include<stdint.h>
 
 #define __vo volatile
+#define __weak __attribute__((weak))
 
 /**********************************START:Processor Specific Details **********************************/
 /*
@@ -169,6 +170,23 @@ typedef struct
 } RCC_RegDef_t;
 
 /*
+ * peripheral register definition structure for SPI
+ */
+typedef struct
+{
+	__vo uint32_t CR1;        /*!< TODO,     										Address offset: 0x00 */
+	__vo uint32_t CR2;        /*!< TODO,     										Address offset: 0x04 */
+	__vo uint32_t SR;         /*!< TODO,     										Address offset: 0x08 */
+	__vo uint32_t DR;         /*!< TODO,     										Address offset: 0x0C */
+	__vo uint32_t CRCPR;      /*!< TODO,     										Address offset: 0x10 */
+	__vo uint32_t RXCRCR;     /*!< TODO,     										Address offset: 0x14 */
+	__vo uint32_t TXCRCR;     /*!< TODO,     										Address offset: 0x18 */
+	__vo uint32_t I2SCFGR;    /*!< TODO,     										Address offset: 0x1C */
+	__vo uint32_t I2SPR;      /*!< TODO,     										Address offset: 0x20 */
+} SPI_RegDef_t;
+
+
+/*
  * peripheral register definition structure for EXTI
  */
 typedef struct
@@ -307,6 +325,8 @@ typedef struct
 #define DISABLE 0
 #define SET ENABLE
 #define RESET DISABLE
+#define FLAG_RESET DISABLE
+#define FLAG_SET ENABLE
 
 /*
  * IRQ(Interrupt Request) Numbers of STM32F407x MCU
@@ -341,5 +361,53 @@ typedef struct
 #define NVIC_IRQ_PRI0    0
 #define NVIC_IRQ_PRI15    15
 
+/******************************************************************************************
+ *Bit position definitions of SPI peripheral
+ ******************************************************************************************/
+/*
+ * Bit position definitions SPI_CR1
+ */
+#define SPI_CR1_CPHA     				 0
+#define SPI_CR1_CPOL      				 1
+#define SPI_CR1_MSTR     				 2
+#define SPI_CR1_BR   					 3
+#define SPI_CR1_SPE     				 6
+#define SPI_CR1_LSBFIRST   			 	 7
+#define SPI_CR1_SSI     				 8
+#define SPI_CR1_SSM      				 9
+#define SPI_CR1_RXONLY      		 	10
+#define SPI_CR1_DFF     			 	11
+#define SPI_CR1_CRCNEXT   			 	12
+#define SPI_CR1_CRCEN   			 	13
+#define SPI_CR1_BIDIOE     			 	14
+#define SPI_CR1_BIDIMODE      			15
+
+/*
+ * Bit position definitions SPI_CR2
+ */
+#define SPI_CR2_RXDMAEN		 			0
+#define SPI_CR2_TXDMAEN				 	1
+#define SPI_CR2_SSOE				 	2
+#define SPI_CR2_FRF						4
+#define SPI_CR2_ERRIE					5
+#define SPI_CR2_RXNEIE				 	6
+#define SPI_CR2_TXEIE					7
+
+
+/*
+ * Bit position definitions SPI_SR
+ */
+#define SPI_SR_RXNE						0
+#define SPI_SR_TXE				 		1
+#define SPI_SR_CHSIDE				 	2
+#define SPI_SR_UDR					 	3
+#define SPI_SR_CRCERR				 	4
+#define SPI_SR_MODF					 	5
+#define SPI_SR_OVR					 	6
+#define SPI_SR_BSY					 	7
+#define SPI_SR_FRE					 	8
+
 #include "stm32f446re_gpio_driver.h"
+#include "stm32f446re_spi_driver.h"
+
 #endif /* INC_STM32F446_H_ */
