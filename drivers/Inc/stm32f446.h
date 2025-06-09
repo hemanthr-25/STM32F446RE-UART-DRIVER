@@ -215,6 +215,37 @@ typedef struct
 } SYSCFG_RegDef_t;
 
 /*
+ * peripheral register definition structure for I2C
+ */
+typedef struct
+{
+  __vo uint32_t CR1;        /*!< TODO,     										Address offset: 0x00 */
+  __vo uint32_t CR2;        /*!< TODO,     										Address offset: 0x04 */
+  __vo uint32_t OAR1;       /*!< TODO,     										Address offset: 0x08 */
+  __vo uint32_t OAR2;       /*!< TODO,     										Address offset: 0x0C */
+  __vo uint32_t DR;         /*!< TODO,     										Address offset: 0x10 */
+  __vo uint32_t SR1;        /*!< TODO,     										Address offset: 0x14 */
+  __vo uint32_t SR2;        /*!< TODO,     										Address offset: 0x18 */
+  __vo uint32_t CCR;        /*!< TODO,     										Address offset: 0x1C */
+  __vo uint32_t TRISE;      /*!< TODO,     										Address offset: 0x20 */
+  __vo uint32_t FLTR;       /*!< TODO,     										Address offset: 0x24 */
+}I2C_RegDef_t;
+
+/*
+ * peripheral register definition structure for USART
+ */
+typedef struct
+{
+	__vo uint32_t SR;         /*!< TODO,     										Address offset: 0x00 */
+	__vo uint32_t DR;         /*!< TODO,     										Address offset: 0x04 */
+	__vo uint32_t BRR;        /*!< TODO,     										Address offset: 0x08 */
+	__vo uint32_t CR1;        /*!< TODO,     										Address offset: 0x0C */
+	__vo uint32_t CR2;        /*!< TODO,     										Address offset: 0x10 */
+	__vo uint32_t CR3;        /*!< TODO,     										Address offset: 0x14 */
+	__vo uint32_t GTPR;       /*!< TODO,     										Address offset: 0x18 */
+} USART_RegDef_t;
+
+/*
  * peripheral definitions ( Peripheral base addresses typecasted to xxx_RegDef_t)
  */
 #define GPIOA  				((GPIO_RegDef_t*)GPIOA_BASEADDR)
@@ -407,7 +438,142 @@ typedef struct
 #define SPI_SR_BSY					 	7
 #define SPI_SR_FRE					 	8
 
+/******************************************************************************************
+ *Bit position definitions of I2C peripheral
+ ******************************************************************************************/
+/*
+ * Bit position definitions I2C_CR1
+ */
+#define I2C_CR1_PE						0
+#define I2C_CR1_NOSTRETCH  				7
+#define I2C_CR1_START 					8
+#define I2C_CR1_STOP  				 	9
+#define I2C_CR1_ACK 				 	10
+#define I2C_CR1_SWRST  				 	15
+
+/*
+ * Bit position definitions I2C_CR2
+ */
+#define I2C_CR2_FREQ				 	0
+#define I2C_CR2_ITERREN				 	8
+#define I2C_CR2_ITEVTEN				 	9
+#define I2C_CR2_ITBUFEN 			    10
+
+/*
+ * Bit position definitions I2C_OAR1
+ */
+#define I2C_OAR1_ADD0    				 0
+#define I2C_OAR1_ADD71 				 	 1
+#define I2C_OAR1_ADD98  			 	 8
+#define I2C_OAR1_ADDMODE   			 	15
+
+/*
+ * Bit position definitions I2C_SR1
+ */
+
+#define I2C_SR1_SB 					 	0
+#define I2C_SR1_ADDR 				 	1
+#define I2C_SR1_BTF 					2
+#define I2C_SR1_ADD10 					3
+#define I2C_SR1_STOPF 					4
+#define I2C_SR1_RXNE 					6
+#define I2C_SR1_TXE 					7
+#define I2C_SR1_BERR 					8
+#define I2C_SR1_ARLO 					9
+#define I2C_SR1_AF 					 	10
+#define I2C_SR1_OVR 					11
+#define I2C_SR1_TIMEOUT 				14
+
+/*
+ * Bit position definitions I2C_SR2
+ */
+#define I2C_SR2_MSL						0
+#define I2C_SR2_BUSY 					1
+#define I2C_SR2_TRA 					2
+#define I2C_SR2_GENCALL 				4
+#define I2C_SR2_DUALF 					7
+
+/*
+ * Bit position definitions I2C_CCR
+ */
+#define I2C_CCR_CCR 					 0
+#define I2C_CCR_DUTY 					14
+#define I2C_CCR_FS  				 	15
+
+/******************************************************************************************
+ *Bit position definitions of USART peripheral
+ ******************************************************************************************/
+
+/*
+ * Bit position definitions USART_CR1
+ */
+#define USART_CR1_SBK					0
+#define USART_CR1_RWU 					1
+#define USART_CR1_RE  					2
+#define USART_CR1_TE 					3
+#define USART_CR1_IDLEIE 				4
+#define USART_CR1_RXNEIE  				5
+#define USART_CR1_TCIE					6
+#define USART_CR1_TXEIE					7
+#define USART_CR1_PEIE 					8
+#define USART_CR1_PS 					9
+#define USART_CR1_PCE 					10
+#define USART_CR1_WAKE  				11
+#define USART_CR1_M 					12
+#define USART_CR1_UE 					13
+#define USART_CR1_OVER8  				15
+
+
+
+/*
+ * Bit position definitions USART_CR2
+ */
+#define USART_CR2_ADD   				0
+#define USART_CR2_LBDL   				5
+#define USART_CR2_LBDIE  				6
+#define USART_CR2_LBCL   				8
+#define USART_CR2_CPHA   				9
+#define USART_CR2_CPOL   				10
+#define USART_CR2_STOP   				12
+#define USART_CR2_LINEN   				14
+
+
+/*
+ * Bit position definitions USART_CR3
+ */
+#define USART_CR3_EIE   				0
+#define USART_CR3_IREN   				1
+#define USART_CR3_IRLP  				2
+#define USART_CR3_HDSEL   				3
+#define USART_CR3_NACK   				4
+#define USART_CR3_SCEN   				5
+#define USART_CR3_DMAR  				6
+#define USART_CR3_DMAT   				7
+#define USART_CR3_RTSE   				8
+#define USART_CR3_CTSE   				9
+#define USART_CR3_CTSIE   				10
+#define USART_CR3_ONEBIT   				11
+
+/*
+ * Bit position definitions USART_SR
+ */
+
+#define USART_SR_PE        				0
+#define USART_SR_FE        				1
+#define USART_SR_NE        				2
+#define USART_SR_ORE       				3
+#define USART_SR_IDLE       			4
+#define USART_SR_RXNE        			5
+#define USART_SR_TC        				6
+#define USART_SR_TXE        			7
+#define USART_SR_LBD        			8
+#define USART_SR_CTS        			9
+
+
 #include "stm32f446re_gpio_driver.h"
 #include "stm32f446re_spi_driver.h"
+#include "stm32f446re_rcc_driver.h"
+#include "stm32f446re_i2c_driver.h"
+#include "stm32f446re_usart_driver.h"
 
 #endif /* INC_STM32F446_H_ */
